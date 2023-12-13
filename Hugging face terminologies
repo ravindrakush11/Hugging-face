@@ -1,0 +1,52 @@
+GQA: Google QnA
+PEFT: Parameter efficient fine tuning
+DPO: Direct Preference Optimization 
+AWQ: 
+GPTQ: GPT Quantization
+GGUF: GPT-Generated Unified Format
+LLaMA: Large Language Model Meta AI
+Einops: Einstein-Inspired Notation for operations
+
+# Delete any models previously created
+del model, tokenizer, pipe
+
+# Empty VRAM cache
+import torch
+torch.cuda.empty_cache()
+AWQ is an efficient, accurate and blazing-fast low-bit weight quantization method, currently supporting 4-bit quantization. Compared to GPTQ, it offers faster Transformers-based inference.	
+
+Quantization
+Quantization techniques reduces memory and computational costs by representing weights and activations with lower-precision data types like 8-bit integers (int8). This enables loading larger models you normally wouldn’t be able to fit into memory, and speeding up inference. Transformers supports the AWQ and GPTQ quantization algorithms and it supports 8-bit and 4-bit quantization with bitsandbytes.
+https://huggingface.co/docs/transformers/main_classes/quantization
+
+GPTQ is a neural network compression technique that enables the efficient deployment of Generative Pretrained Transformers (GPT). GPTs are a specific type of Large Language Model (LLM) developed by OpenAI.
+https://picovoice.ai/blog/what-is-gptq/#:~:text=October%2011%2C%202023%20%C2%B7%201%20min%20read&text=GPTQ%20is%20a%20neural%20network,(%20LLM%20)%20developed%20by%20OpenAI.
+
+GGUF: GPT-Generated Unified Format
+Although GPTQ does compression well, its focus on GPU can be a disadvantage if you do not have the hardware to run it. GGUF, previously GGML, is a quantization method that allows users to use the CPU to run an LLM but also offload some of its layers to the GPU for a speed up
+https://medium.com/@phillipgimmi/what-is-gguf-and-ggml-e364834d241c
+
+Cross Entropy: Cross-entropy Loss, often called “cross-entropy,” is a loss function commonly used in machine learning and deep learning, particularly in classification tasks. It quantifies the dissimilarity between the predicted probability distribution and the actual probability distribution (ground truth) of a set of events or classes.
+ https://spotintelligence.com/2023/09/27/cross-entropy-loss/#What_is_cross-entropy_loss
+Safetensors is a serialization format for storing and loading large tensors. It was developed by Hugging Face.
+•	Security: Safetensors doesn't allow code execution.
+•	Cross-language and cross-framework compatibility: Safetensors enables compatibility across languages and frameworks.
+•	Lazy loading: Safetensors allows users to load only some tensors, or part of tensors for a given file.
+
+https://huggingface.co/docs/safetensors/index
+ 
+XFormers is a PyTorch-based library that contains flexible Transformer parts. These parts are optimized and interoperable building blocks that can be combined to create state-of-the-art models. XFormers is used by researchers in vision and NLP.
+XFormers aims to reproduce most architectures in the Transformer-family SOTA. It's made up of composable building blocks that are compatible and combined, rather than monolithic models. XFormers is also easy to extend locally, so users can focus on specific improvements and compare them against the state of the art. 
+XFormers provides an optional method to accelerate image generation. This enhancement is only available for NVIDIA GPUs. It optimizes image generation and reduces VRAM usage
+
+Einops stands for Einstein-Inspired Notation for tensor operations. It is a flexible and powerful tool to ensure code readability and reliability with a minimalist yet powerful API.
+Here are some of the benefits of using Einops:
+•	Powerful:
+Einops provides a wide range of operations that can be performed on tensors. These operations include transpositions, rotations, cropping, and more.
+•	Flexible:
+Einops is framework-independent. This means that it can be used with any deep learning framework, such as PyTorch, TensorFlow, or MXNet.
+•	Readable:
+Einops uses a notation that is inspired by Einstein summation notation. This makes the code more readable and easier to understand.
+
+The function calls help developers define a schema and return JSON in a more transparent and accessible way. I've been working on a lightweight library called openai_function_call that utilizes Pydantic and OpenAI function calls.
+
