@@ -1,53 +1,50 @@
-````markdown
-# 🚀 **vLLM API Server (OpenAI-Compatible)**
+# 🚀 **vLLM API Server**  
+**(OpenAI-Compatible)**
 
-Welcome to the **vLLM API Server**, a fast and memory-efficient server for running OpenAI-compatible models using [vLLM](https://github.com/vllm-project/vllm). This server supports popular models like `facebook/opt-1.3b` and `mistralai/Mistral-7B-Instruct-v0.1`, and can be easily deployed on **WSL 2** with **GPU support**.
+Welcome to the **vLLM API Server**, a **fast** and **memory-efficient** solution for running OpenAI-compatible models using [vLLM](https://github.com/vllm-project/vllm). With support for popular models like `facebook/opt-1.3b` and `mistralai/Mistral-7B-Instruct-v0.1`, this server can be easily deployed on **WSL 2** with **GPU support**. Experience the future of AI model serving with seamless performance!
 
 ---
 
-## ✅ **Requirements**
+## ✅ **System Requirements**
 
-To run the vLLM server, ensure you have the following:
+Before running the vLLM server, make sure you have the following:
 
-- **Windows 11**
-- **WSL 2 with Ubuntu** (preferably 22.04 or 24.04)
-- **NVIDIA GPU** with **WSL2-compatible CUDA drivers**
-- **Python 3.10+**
-- **Internet connection** (for downloading models)
+- **🖥️ Windows 11** (for a smooth experience)
+- **🐧 WSL 2 with Ubuntu** (preferably 22.04 or 24.04)
+- **💻 NVIDIA GPU** with **WSL2-compatible CUDA drivers**
+- **🐍 Python 3.10+** (or later versions)
+- **🌐 Stable Internet Connection** (for downloading models)
 
 ---
 
 ## ⚙️ **Installation Guide (via WSL 2)**
 
-Follow the steps below to set up the server on **WSL 2**:
+Here’s a step-by-step guide to setting up the **vLLM API Server** on **WSL 2**:
 
-### 1. **Launch WSL (Ubuntu)**
+### 1. **Launch WSL (Ubuntu)**  
+First, open the **WSL terminal** to start the setup process.
 
-```bash
-wsl
-````
-
-### 2. **Update system and install dependencies**
+### 2. **Update Your System & Install Dependencies**  
+Run the following commands to update your system and install the necessary packages:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install python3-pip python3-venv git -y
 ```
 
-### 3. **Create and activate a Python virtual environment** (optional but recommended)
+
+### 3. **Create and activate a Python virtual environment**
+
+This step is optional but recommended for managing dependencies.
 
 ```bash
 python3 -m venv vllm-env
 source vllm-env/bin/activate
 ```
 
-### 4. **Install PyTorch with CUDA support** (for GPU)
+### 4. **Install vLLM**
 
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-
-### 5. **Install vLLM**
+vLLM contains pre-compiled C++ and CUDA (12.6) binaries, so you don't need to install PyTorch beforehand to avoid dependency conflicts.
 
 ```bash
 pip install vllm
@@ -57,20 +54,20 @@ pip install vllm
 
 ## 🚀 **Run the vLLM API Server**
 
-Start the API server with the following command:
+To start the API server, use the following command:
 
 ```bash
 python3 -m vllm.entrypoints.openai.api_server --model facebook/opt-1.3b
 ```
 
-* The server will run on: `http://localhost:8000/v1/completions`
-* The model is downloaded to: `~/.cache/huggingface`
+Once the server starts, it will be available at:
+
+* **API URL:** `http://localhost:8000/v1/completions`
+* **Model location:** `~/.cache/huggingface`
 
 ---
 
 ## 📡 **Test the API with Postman**
-
-Here’s how to test the running server using **Postman**:
 
 ### Request Configuration:
 
@@ -80,7 +77,7 @@ Here’s how to test the running server using **Postman**:
 
   * `Content-Type: application/json`
 
-### Body (raw, JSON):
+### Request Body (raw, JSON):
 
 ```json
 {
@@ -90,7 +87,7 @@ Here’s how to test the running server using **Postman**:
 }
 ```
 
-Click **Send** and you should receive a response like:
+Click **Send**, and you should receive a response similar to:
 
 ```json
 {
@@ -121,7 +118,7 @@ Click **Send** and you should receive a response like:
 
 ## 🧹 **Cleanup and Uninstallation**
 
-If you want to remove **vLLM** and its dependencies:
+To remove **vLLM** and its dependencies, follow these steps:
 
 ### 1. **Uninstall the packages:**
 
@@ -155,4 +152,3 @@ rm -rf vllm-env
 ---
 
 **Enjoy your fast and efficient AI model deployment! 🚀**
-
