@@ -133,12 +133,6 @@ This visualizes metrics like loss, accuracy, and learning rate over time.
 
 ## 📌 Bonus: Code Debugging Questions
 
-### ❓ What’s a common mistake when using the `Trainer` API with tokenizers?
-
-**Answer:** Using `processing_class` instead of `tokenizer` or forgetting to pass `compute_metrics` if custom metrics are required.
-
----
-
 ### ❓ If evaluation metric shows `0.0` accuracy, what would you check?
 
 **Answer:**
