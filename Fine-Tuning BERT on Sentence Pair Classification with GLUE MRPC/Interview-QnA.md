@@ -31,9 +31,9 @@
 
 ---
 
-### ❓ What’s wrong with `processing_class=tokenizer` in the `Trainer`?
+### ❓ What’s the `processing_class=tokenizer` in the `Trainer`?
 
-**Answer:** `processing_class` is not a valid parameter. The correct parameter to pass the tokenizer is `tokenizer=tokenizer`.
+**Answer:** The `processing_class` argument allows the Trainer to automatically handle input data processing, including tokenization and feature extraction..
 
 ---
 
