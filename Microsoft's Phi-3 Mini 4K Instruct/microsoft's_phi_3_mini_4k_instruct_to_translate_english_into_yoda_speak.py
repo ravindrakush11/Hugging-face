@@ -178,7 +178,7 @@ def gen_prompt(tokenizer, sentence):
       {"role": "user", "content": sentence},
   ]
   prompt = tokenizer.apply_chat_template(converted_sample,
-                                         tokenizer = False,
+                                         tokenize = False,
                                          add_generation_prompt = True)
   return prompt
 
@@ -187,25 +187,11 @@ sentence = "The Force is strong in you!"
 prompt = gen_prompt(tokenizer, sentence)
 print(prompt)
 
-# def generate(model, tokenizer, prompt, max_new_tokens=64, skip_special_tokens=False):
-#     tokenized_input = tokenizer(prompt, add_special_tokens=False, return_tensors="pt").to(model.device)
-
-#     model.eval()
-#     generation_output = model.generate(**tokenized_input,
-#                                        eos_token_id=tokenizer.eos_token_id,
-#                                        max_new_tokens=max_new_tokens)
-
-#     output = tokenizer.batch_decode(generation_output,
-#                                     skip_special_tokens=skip_special_tokens)
-#     return output[0]
-
-
-
 def generate(model, tokenizer, prompt, max_new_tokens=64, skip_special_tokens=False):
     tokenized_input = tokenizer(prompt, add_special_tokens = False, return_tensors="pt").to(model.device)
 
     model.eval()
-    generated_output = model.generate(**tokenized_input,
+    generation_output = model.generate(**tokenized_input,
                                       eos_token_id = tokenizer.eos_token_id,
                                       max_new_tokens = max_new_tokens)
 
@@ -225,5 +211,4 @@ os.listdir('local-phi3-mini-yoda-adapter')
 from huggingface_hub import login
 login()
 
-trainer.push()
-
+trainer.push_to_hub()
