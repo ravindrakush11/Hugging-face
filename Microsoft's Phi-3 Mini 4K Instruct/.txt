@@ -1,2 +1,4 @@
 
 https://huggingface.co/blog/dvgodoy/fine-tuning-llm-hugging-face
+
+https://colab.research.google.com/github/ravindrakush11/Hugging-face/blob/main/Microsoft's_Phi_3_Mini_4K_Instruct_to_translate_English_into_Yoda_speak.ipynb
